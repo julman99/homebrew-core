@@ -1,8 +1,8 @@
 class Eatmemory < Formula
   desc "Simple program to allocate memory from the command-line"
   homepage "https://github.com/julman99/eatmemory"
-  url "https://github.com/julman99/eatmemory/archive/refs/tags/v0.1.7.tar.gz"
-  sha256 "93a3810024df8428165322d9289cf8dadf81540a181f104c151381507fb6977e"
+  url "https://github.com/julman99/eatmemory/archive/refs/tags/v0.1.8.tar.gz"
+  sha256 "1d2bc0976762a01f554948a3c728bc52cb639aa4d5dbba1421fc3677f042c23f"
   license "MIT"
 
   def install
@@ -10,6 +10,8 @@ class Eatmemory < Formula
   end
 
   test do
-    system "#{bin}/eatmemory", "-?"
+    output = shell_output "#{bin}/eatmemory -?"
+    version_escaped = version.to_s.gsub(/\./, '\.')
+    assert_match %r{^eatmemory #{version_escaped} - https://github.com/julman99/eatmemory\n.*}, output
   end
 end
